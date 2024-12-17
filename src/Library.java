@@ -19,6 +19,30 @@ public class Library {
             System.out.println(livre);
         }
     }
+    public Livre RechercherLivre(String val){
+        for (Livre livre: livres){
+            if(livre.getIsbn().equals(val)|| livre.getAuteur().equals(val)||livre.getTitre().equals(val)){
+                System.out.println(livre);
+            }
+
+        }
+
+        return null;
+    }
+    public void modifierLivre(String snmod , String nwval,int choicemod){
+        for(Livre livre : livres){
+            if(livre.getIsbn().equals(snmod)){
+                switch (choicemod){
+                    case 1 -> livre.setTitre(nwval);
+                    case 2 -> livre.setAuteur(nwval);
+
+
+
+                }
+            }
+        }
+
+    }
 
 
 }

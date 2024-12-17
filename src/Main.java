@@ -48,11 +48,45 @@ public class Main {
                     library.afficherLivre();
                     break;
 
+                case 3:
+                    System.out.println("entrez l' isnb du livre a modifié ");
+                    String isnbmod = scan.nextLine();
+
+
+                    System.out.println("qu'est ce que vous voulez modifier exactement  ");
+                    System.out.println("entrez 1 pour modifier le titre ");
+                    System.out.println("entrez 2 pour modifier l'auteur ");
+                    System.out.println("entrez 3 pour modifier la disponibilité");
+
+                    int choixmod = scan.nextInt();
+                    scan.nextLine();
+
+                    System.out.println("entrez la modification  :  ");
+                    String nwtt = scan.nextLine();
+
+
+                    library.modifierLivre(isnbmod,nwtt,choixmod);
+
+
+
+                    break;
+                case 4 :
+                    System.out.println("Rechercher   :  ");
+                    String vall = scan.nextLine();
+
+                    library.RechercherLivre(vall);
+
+
+
+                    break;
+
 
 
                 default:
                     System.out.println("choix indisponible");
                     break;
+
+
             }
 
 
