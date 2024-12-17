@@ -43,6 +43,27 @@ public class Library {
         }
 
     }
+    public void modifierLivre(String snmod , boolean nwbool,int choicemod){
+        for(Livre livre : livres){
+            if(livre.getIsbn().equals(snmod)){
+                switch (choicemod){
+                    case 3 -> livre.setDisponible(nwbool);
+
+
+
+                }
+            }
+        }
+
+    }
+
+    public void SupprimerLivre(String snsup){
+        for (Livre livre : livres) {
+            livres.remove(livre);
+        }
+
+
+    }
 
 
 }

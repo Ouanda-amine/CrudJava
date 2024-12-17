@@ -61,12 +61,20 @@ public class Main {
                     int choixmod = scan.nextInt();
                     scan.nextLine();
 
-                    System.out.println("entrez la modification  :  ");
-                    String nwtt = scan.nextLine();
+                   if(choixmod==1 || choixmod==2){
+                       System.out.println("entrez la modification  :  ");
+                       String nwtt = scan.nextLine();
 
 
-                    library.modifierLivre(isnbmod,nwtt,choixmod);
+                       library.modifierLivre(isnbmod,nwtt,choixmod);
 
+                   }else{
+                       System.out.println("entrez la modification  :  ");
+                       boolean nwbool = scan.nextBoolean();
+
+                       library.modifierLivre(isnbmod,nwbool,choixmod);
+
+                   }
 
 
                     break;
@@ -78,6 +86,12 @@ public class Main {
 
 
 
+                    break;
+                case 5 :
+                    System.out.println("isbn a supprimé   :  ");
+                    String supnbr = scan.nextLine();
+
+                    library.SupprimerLivre(supnbr);
                     break;
 
 
