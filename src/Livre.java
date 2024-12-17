@@ -1,11 +1,10 @@
 public class Livre {
-
     String titre ;
     String auteur;
-    int isbn;
+    String isbn;
     boolean disponible;
 
-    public Livre(String titre, String auteur, int isbn, boolean disponible) {
+    public Livre(String titre, String auteur, String isbn, boolean disponible) {
         this.titre = titre;
         this.auteur = auteur;
         this.isbn = isbn;
@@ -28,11 +27,11 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
