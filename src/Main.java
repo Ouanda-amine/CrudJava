@@ -93,8 +93,12 @@ public class Main {
 
                     library.SupprimerLivre(supnbr);
                     break;
+                case 6 :
+                    System.out.println("entrez le nom de livre que vous voulez emprunter ");
+                    String nmlivre = scan.nextLine();
 
-
+                    library.emprunter(nmlivre);
+                    break;
 
                 default:
                     System.out.println("choix indisponible");

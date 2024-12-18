@@ -56,6 +56,25 @@ public class Library {
         }
 
     }
+    public Livre emprunter (String titree){
+        for(Livre livre : livres){
+            if(livre.getTitre().equals(titree) && livre.isDisponible()){
+
+                    System.out.println("vous avez emprunté le livre" + titree);
+                    livre.setDisponible(false);
+
+
+            }else if(livre.getTitre().equals(titree) && !livre.isDisponible()){
+
+
+                    System.out.println(" livre  indisponible !" );
+
+
+            }
+
+        }return null;
+
+    }
 
     public void SupprimerLivre(String snsup){
         for (Livre livre : livres) {
