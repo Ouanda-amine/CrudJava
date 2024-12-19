@@ -2,12 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List<Livre> livres;
+     static List<Livre> livres;
+
+
 
 
     public Library() {
         this.livres = new ArrayList<>();
+
+
     }
+
 
     public  void AjouteLivre(Livre livre){
         livres.add(livre);
@@ -56,18 +61,19 @@ public class Library {
         }
 
     }
-    public Livre emprunter (String titree){
+
+    public Livre retourner (String titre , String nmaaadr , int iid ){
         for(Livre livre : livres){
-            if(livre.getTitre().equals(titree) && livre.isDisponible()){
+            if(livre.getTitre().equals(titre) && !livre.isDisponible() ){
 
-                    System.out.println("vous avez emprunté le livre" + titree);
-                    livre.setDisponible(false);
-
-
-            }else if(livre.getTitre().equals(titree) && !livre.isDisponible()){
+                System.out.println("l'adherent " + nmaaadr + "avec l'id : " + iid + "a emprunté le livre  " + titre);
+                livre.setDisponible(true);
 
 
-                    System.out.println(" livre  indisponible !" );
+            }else if(livre.getTitre().equals(titre) && livre.isDisponible()){
+
+
+                System.out.println(" livre  deja existe  !" );
 
 
             }
@@ -83,6 +89,5 @@ public class Library {
 
 
     }
-
 
 }
