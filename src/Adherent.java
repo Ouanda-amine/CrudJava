@@ -30,8 +30,6 @@ public class Adherent {
                                   System.out.println("livre emprinté par " +nom);
                       },()-> System.out.println("livre non trouvé")
                       );
-
-
     }
 
     public void retourner (String titre  ){
@@ -44,6 +42,7 @@ public class Adherent {
                 },()-> System.out.println("livre non trouvé !")
                 );
     }
+
 
     public  void AfficherLivresEmpruntes(){
         for(Livre livre : livresEmpruntes){

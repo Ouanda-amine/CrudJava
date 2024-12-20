@@ -47,12 +47,14 @@ public class Main {
                         String auteur = scan.nextLine();
                         System.out.println("livre disponible ou non ");
                         boolean isdispo = scan.nextBoolean();
+
+
                         library.AjouteLivre(new Livre(titre, auteur, isbn, isdispo));
 
 
                         break;
                     case 2:
-                        library.afficherLivre();
+                        library.AfficherLivre();
                         break;
 
                     case 3:
@@ -73,13 +75,13 @@ public class Main {
                             String nwtt = scan.nextLine();
 
 
-                            library.modifierLivre(isnbmod,nwtt,choixmod);
+                            library.ModifierLivre(isnbmod,nwtt,choixmod);
 
                         }else{
                             System.out.println("entrez la modification  :  ");
                             boolean nwbool = scan.nextBoolean();
 
-                            library.modifierLivre(isnbmod,nwbool,choixmod);
+                            library.ModifierLivre(isnbmod,nwbool,choixmod);
 
                         }
 

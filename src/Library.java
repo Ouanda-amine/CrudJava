@@ -10,20 +10,21 @@ public class Library {
     public Library() {
     }
 
-    public  void AjouteLivre(Livre newlivre){
+    public  void AjouteLivre(Livre  nlivre){
 
-        boolean dejaexiste = livres.stream().anyMatch(livre1 -> livre1.getIsbn()==newlivre.getIsbn());
-
-        if (dejaexiste){
-            System.out.println("isbn deja existe");
-        }else{
-            livres.add(newlivre);
-            System.out.println("livre ajouté");
+        for(Livre livre : livres){
+            if(livre.getIsbn().equals(nlivre.isbn)){
+                System.out.println("livre deja existe");
+                return;
+            }
         }
+
+        livres.add(nlivre);
+        System.out.println("livre ajouté");
 
 
     }
-    public void afficherLivre(){
+    public void AfficherLivre(){
        livres.stream()
                .forEach(System.out::println);
     }
@@ -32,7 +33,7 @@ public class Library {
                 .forEach(System.out::println);
 
     }
-    public void modifierLivre(String snmod , String nwval,int choicemod){
+    public void ModifierLivre(String snmod , String nwval,int choicemod){
        livres.stream().filter(livre -> snmod.equals(livre.isbn))
                .findFirst()
                .ifPresentOrElse(livre -> {
@@ -44,7 +45,7 @@ public class Library {
                },()-> System.out.println("livre non trouvé"));
 
     }
-    public void modifierLivre(String snmod , boolean nwbool,int choicemod){
+    public void ModifierLivre(String snmod , boolean nwbool,int choicemod){
         livres.stream().filter(livre -> snmod.equals(livre.isbn))
                 .findFirst()
                 .ifPresentOrElse(livre -> {
