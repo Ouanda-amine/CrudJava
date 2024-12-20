@@ -20,17 +20,18 @@ public class Main {
             do {
                 System.out.println("entrez 1 pour ajouter un livre");
                 System.out.println("entrez 2 pour afficher les livres");
-                System.out.println("entrez 3 pour modifier ");
+                System.out.println("entrez 3 pour modifier sur un livre ");
                 System.out.println("entrez 4 pour rechercher un livre");
                 System.out.println("entrez 5 pour supprimer un livre ");
-                System.out.println("entrez 6 pour la racine carre");
-                System.out.println("entrez 7 pour la factorielle ");
-                System.out.println("entrez 8 pour Quitter \n");
+                System.out.println("entrez 6 pour emprunter un livre ");
+                System.out.println("entrez 7 pour retourner un  livre");
+                System.out.println("entrez 8 pour afficher les livres empruntes");
+                System.out.println("entrez 9 pour Quitter \n");
 
 
                 choix = scan.nextInt();
                 scan.nextLine();
-                if (choix == 8) {
+                if (choix == 9) {
                     System.out.println("au revoir");
                     break;
                 }
@@ -87,7 +88,7 @@ public class Main {
                     case 4 :
                         System.out.println("Rechercher   :  ");
                         String vall = scan.nextLine();
-//aa
+
                         library.RechercherLivre(vall);
 
 
@@ -119,14 +120,19 @@ public class Main {
                         System.out.println("entrez votre nom ");
                         String nmaaadr= scan.nextLine();
 
-                        System.out.println("entrez id : ");
-                        int iid= scan.nextInt();
+                        adr.setNom(nmaaadr);
+
 
 
                         System.out.println("entrez le nom de livre que vous voulez retourner ");
                         String nmllivre = scan.nextLine();
 
-                        library.retourner(nmllivre,nmaaadr,iid);
+                        adr.retourner(nmllivre);
+                        break;
+
+                    case 8 :
+                        adr.AfficherLivresEmpruntes();
+
                         break;
 
                     default:

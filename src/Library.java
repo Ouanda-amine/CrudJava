@@ -2,91 +2,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-     static List<Livre> livres;
+     static List<Livre> livres = new ArrayList<>();
 
 
 
 
     public Library() {
-        this.livres = new ArrayList<>();
-
-
     }
 
+    public  void AjouteLivre(Livre newlivre){
 
-    public  void AjouteLivre(Livre livre){
-        livres.add(livre);
-        System.out.println("livre ajouté");
+        boolean dejaexiste = livres.stream().anyMatch(livre1 -> livre1.getIsbn()==newlivre.getIsbn());
+
+        if (dejaexiste){
+            System.out.println("isbn deja existe");
+        }else{
+            livres.add(newlivre);
+            System.out.println("livre ajouté");
+        }
+
 
     }
     public void afficherLivre(){
-        for (Livre livre : livres){
-            System.out.println(livre);
-        }
+       livres.stream()
+               .forEach(System.out::println);
     }
-    public Livre RechercherLivre(String val){
-        for (Livre livre: livres){
-            if(livre.getIsbn().equals(val)|| livre.getAuteur().equals(val)||livre.getTitre().equals(val)){
-                System.out.println(livre);
-            }
+    public void RechercherLivre(String val){
+        livres.stream().filter(livre -> val.equals(livre.titre) || val.equals(livre.isbn) || val.equals(livre.auteur))
+                .forEach(System.out::println);
 
-        }
-
-        return null;
     }
     public void modifierLivre(String snmod , String nwval,int choicemod){
-        for(Livre livre : livres){
-            if(livre.getIsbn().equals(snmod)){
-                switch (choicemod){
-                    case 1 -> livre.setTitre(nwval);
-                    case 2 -> livre.setAuteur(nwval);
-
-
-
-                }
-            }
-        }
+       livres.stream().filter(livre -> snmod.equals(livre.isbn))
+               .findFirst()
+               .ifPresentOrElse(livre -> {
+                   if(choicemod==1){
+                       livre.setTitre(nwval);
+                   }else if(choicemod==2){
+                       livre.setAuteur(nwval);
+                   }
+               },()-> System.out.println("livre non trouvé"));
 
     }
     public void modifierLivre(String snmod , boolean nwbool,int choicemod){
-        for(Livre livre : livres){
-            if(livre.getIsbn().equals(snmod)){
-                switch (choicemod){
-                    case 3 -> livre.setDisponible(nwbool);
-
-
-
-                }
-            }
-        }
+        livres.stream().filter(livre -> snmod.equals(livre.isbn))
+                .findFirst()
+                .ifPresentOrElse(livre -> {
+                    if (choicemod == 3) {
+                        livre.setDisponible(nwbool);
+                    }
+                },()-> System.out.println("livre non trouvé"));
 
     }
 
-    public Livre retourner (String titre , String nmaaadr , int iid ){
-        for(Livre livre : livres){
-            if(livre.getTitre().equals(titre) && !livre.isDisponible() ){
 
-                System.out.println("l'adherent " + nmaaadr + "avec l'id : " + iid + "a emprunté le livre  " + titre);
-                livre.setDisponible(true);
-
-
-            }else if(livre.getTitre().equals(titre) && livre.isDisponible()){
-
-
-                System.out.println(" livre  deja existe  !" );
-
-
-            }
-
-        }return null;
-
-    }
 
     public void SupprimerLivre(String snsup){
-        for (Livre livre : livres) {
-            livres.remove(livre);
-        }
-
+        livres.removeIf(livre -> snsup.equals(livre.isbn));
 
     }
 
